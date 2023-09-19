@@ -1,5 +1,6 @@
 import Styles from "../style/background.module.css";
 import CarCart from "../components/carCart";
+
 const HomePage = () => {
   return (
     <>
@@ -41,7 +42,7 @@ const HomePage = () => {
         </div>
 
         {/* car filter */}
-        <div className="grid grid-cols-1 grid-rows-3 px-4 mt-10 md:grid-rows-1 md:grid-cols-7 lg:px-0">
+        <div className="grid grid-cols-1 grid-rows-3 px-4 mt-10 md:grid-rows-1 md:grid-cols-7 lg:px-0 ">
           <div className="md:col-span-3 flex flex-col px-4 md:px-6 py-4 bg-white rounded-lg cursor-pointer gap-y-2  transition-all ease-linear duration-150 hover:shadow-[0_0_60px_-5px_rgba(84,166,255,0.3)]">
             <div className="flex gap-x-2">
               <span>

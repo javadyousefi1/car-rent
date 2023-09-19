@@ -1,13 +1,32 @@
-import profileImage from "../../public/images/Imageprofile.png";
+import {  NavLink } from "react-router-dom";
 
 const Header = () => {
+  const routes = [
+    {
+      name: "Home",
+      path: "/",
+    },
+    {
+      name: "cars",
+      path: "/cars",
+    },
+    {
+      name: "favorite",
+      path: "/favorite",
+    },
+    {
+      name: "About",
+      path: "/about",
+    },
+  ];
   return (
-    <header className=" shadow-sm fixed top-0 left-0 right-0 p-2 z-10 bg-white">
-      <div className="container max-w-6xl mx-auto px-4 m-3 ">
+    <header className="fixed top-0 left-0 right-0 z-10 p-2 bg-white shadow-sm ">
+      <div className="container max-w-6xl px-4 m-3 mx-auto ">
+        {/* logo and nav */}
         <div className="flex justify-between">
-          <div className="flex gap-x-8">
-            <span className="text-mainDarkBlue font-bold text-lg">MORENT</span>
-            <div className="border border-mainGray rounded-2xl  flex-row items-center px-2 hidden md:flex hover:border-mainDarkBlue duration-150 transition-all ease-linear ">
+          <div className="flex items-center gap-x-8">
+            <span className="text-lg font-bold text-mainDarkBlue">MORENT</span>
+            {/* <div className="flex-row items-center hidden px-2 transition-all duration-150 ease-linear border border-mainGray rounded-2xl md:flex hover:border-mainDarkBlue ">
               <div className="flex items-center gap-x-2">
                 <span>
                   <svg
@@ -98,63 +117,93 @@ const Header = () => {
                   />
                 </svg>
               </div>
-            </div>
+            </div> */}
+
+            <nav className="hidden md:block">
+              <ul className="flex ml-10 gap-x-6">
+                {routes.map((route, index) => (
+                  <NavLink
+                    key={index}
+                    to={route.path}
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? "pending"
+                        : isActive
+                        ? "text-sm font-semibold text-mainDarkBlue"
+                        : "text-sm font-semibold text-gray-400 transition-all duration-150 ease-linear hover:text-mainDarkBlue"
+                    }
+                  >
+                    {/* <li className=""> */}
+                    {route.name}
+                    {/* </li> */}
+                  </NavLink>
+                ))}
+              </ul>
+            </nav>
           </div>
 
-          <div className="flex gap-x-4 flex-row-reverse">
-            <img src={profileImage} alt="profile" className="w-[30px]" />
-            <div className="w-[30px] h-[30px] rounded-full border border-mainGray  items-center justify-center hidden md:flex ">
-              <span className="fill-[#596780] hover:fill-mainDarkBlue transition-all ease-linear duration-300 cursor-pointer">
+          <div className="flex flex-row-reverse items-center gap-x-4 md:gap-x-8">
+            <span className="cursor-pointer md:hidden ">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="transition-all duration-300 ease-linear h-7 w-7 hover:fill-mainDarkBlue fill-[#596780]"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </span>
+
+            <span className="cursor-pointer ">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                className="transition-all duration-300 ease-linear h-6 w-6 hover:fill-mainDarkBlue fill-[#596780]"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M3 4.25A2.25 2.25 0 015.25 2h5.5A2.25 2.25 0 0113 4.25v2a.75.75 0 01-1.5 0v-2a.75.75 0 00-.75-.75h-5.5a.75.75 0 00-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 00.75-.75v-2a.75.75 0 011.5 0v2A2.25 2.25 0 0110.75 18h-5.5A2.25 2.25 0 013 15.75V4.25z"
+                  clipRule="evenodd"
+                />
+                <path
+                  fillRule="evenodd"
+                  d="M6 10a.75.75 0 01.75-.75h9.546l-1.048-.943a.75.75 0 111.004-1.114l2.5 2.25a.75.75 0 010 1.114l-2.5 2.25a.75.75 0 11-1.004-1.114l1.048-.943H6.75A.75.75 0 016 10z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </span>
+            <NavLink to="/login">
+              <span className="cursor-pointer ">
                 <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="current"
                   xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="transition-all duration-300 ease-linear h-6 w-6 hover:fill-mainDarkBlue fill-[#596780]"
                 >
                   <path
-                    d="M20.1 9.22006C18.29 9.22006 17.55 7.94006 18.45 6.37006C18.97 5.46006 18.66 4.30006 17.75 3.78006L16.02 2.79006C15.23 2.32006 14.21 2.60006 13.74 3.39006L13.63 3.58006C12.73 5.15006 11.25 5.15006 10.34 3.58006L10.23 3.39006C9.78 2.60006 8.76 2.32006 7.97 2.79006L6.24 3.78006C5.33 4.30006 5.02 5.47006 5.54 6.38006C6.45 7.94006 5.71 9.22006 3.9 9.22006C2.86 9.22006 2 10.0701 2 11.1201V12.8801C2 13.9201 2.85 14.7801 3.9 14.7801C5.71 14.7801 6.45 16.0601 5.54 17.6301C5.02 18.5401 5.33 19.7001 6.24 20.2201L7.97 21.2101C8.76 21.6801 9.78 21.4001 10.25 20.6101L10.36 20.4201C11.26 18.8501 12.74 18.8501 13.65 20.4201L13.76 20.6101C14.23 21.4001 15.25 21.6801 16.04 21.2101L17.77 20.2201C18.68 19.7001 18.99 18.5301 18.47 17.6301C17.56 16.0601 18.3 14.7801 20.11 14.7801C21.15 14.7801 22.01 13.9301 22.01 12.8801V11.1201C22 10.0801 21.15 9.22006 20.1 9.22006ZM12 15.2501C10.21 15.2501 8.75 13.7901 8.75 12.0001C8.75 10.2101 10.21 8.75006 12 8.75006C13.79 8.75006 15.25 10.2101 15.25 12.0001C15.25 13.7901 13.79 15.2501 12 15.2501Z"
-                    fill="current"
+                    fillRule="evenodd"
+                    d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z"
+                    clipRule="evenodd"
                   />
                 </svg>
               </span>
-            </div>
-            <div className="w-[30px] h-[30px] rounded-full border border-mainGray  items-center justify-center hidden md:flex">
-              <span className="fill-[#596780] hover:fill-mainDarkBlue transition-all ease-linear duration-300 cursor-pointer">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="current"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19.3399 14.49L18.3399 12.83C18.1299 12.46 17.9399 11.76 17.9399 11.35V8.82C17.9399 6.47 16.5599 4.44 14.5699 3.49C14.0499 2.57 13.0899 2 11.9899 2C10.8999 2 9.91994 2.59 9.39994 3.52C7.44994 4.49 6.09994 6.5 6.09994 8.82V11.35C6.09994 11.76 5.90994 12.46 5.69994 12.82L4.68994 14.49C4.28994 15.16 4.19994 15.9 4.44994 16.58C4.68994 17.25 5.25994 17.77 5.99994 18.02C7.93994 18.68 9.97994 19 12.0199 19C14.0599 19 16.0999 18.68 18.0399 18.03C18.7399 17.8 19.2799 17.27 19.5399 16.58C19.7999 15.89 19.7299 15.13 19.3399 14.49Z"
-                    fill="current"
-                  />
-                  <path
-                    d="M14.8299 20.01C14.4099 21.17 13.2999 22 11.9999 22C11.2099 22 10.4299 21.68 9.87993 21.11C9.55993 20.81 9.31993 20.41 9.17993 20C9.30993 20.02 9.43993 20.03 9.57993 20.05C9.80993 20.08 10.0499 20.11 10.2899 20.13C10.8599 20.18 11.4399 20.21 12.0199 20.21C12.5899 20.21 13.1599 20.18 13.7199 20.13C13.9299 20.11 14.1399 20.1 14.3399 20.07C14.4999 20.05 14.6599 20.03 14.8299 20.01Z"
-                    fill="current"
-                  />
-                </svg>
-              </span>
-            </div>
-            <div className="w-[30px] h-[30px] rounded-full border border-mainGray  items-center justify-center hidden md:flex">
-              <span className="fill-[#596780] hover:fill-mainDarkBlue transition-all ease-linear duration-300 cursor-pointer">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="current"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M16.44 3.09998C14.63 3.09998 13.01 3.97998 12 5.32998C10.99 3.97998 9.37 3.09998 7.56 3.09998C4.49 3.09998 2 5.59998 2 8.68998C2 9.87998 2.19 10.98 2.52 12C4.1 17 8.97 19.99 11.38 20.81C11.72 20.93 12.28 20.93 12.62 20.81C15.03 19.99 19.9 17 21.48 12C21.81 10.98 22 9.87998 22 8.68998C22 5.59998 19.51 3.09998 16.44 3.09998Z"
-                    fill="current"
-                  />
-                </svg>
-              </span>
-            </div>
+            </NavLink>
+
+            <span className="hidden cursor-pointer md:block">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="transition-all duration-300 ease-linear h-6 w-6 hover:fill-mainDarkBlue fill-[#596780]"
+              >
+                <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+              </svg>
+            </span>
           </div>
         </div>
       </div>
