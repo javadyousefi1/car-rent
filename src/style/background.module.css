@@ -11,3 +11,12 @@
   background: url(../../public/images/bgTwo.png) no-repeat center center;
   background-size: cover;
 }
+
+.CarShadowSlider {
+  position: absolute;
+  width: 250px;
+  height: 80%;
+  right: 0px;
+  bottom: 30px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+}

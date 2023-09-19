@@ -2,11 +2,11 @@ import car1 from "../../public/images/car (1).png";
 import Styles from "../style/shadow.module.css"
 const CarCart = () => {
   return (
-    <div className="bg-white rounded-xl p-4 w-[260px] shadow-sm">
+    <div className="bg-white rounded-xl p-4 min-w-[260px] shadow-sm ">
       <div className="flex justify-between">
         <div className="flex flex-col ">
           <span className="font-bold text-md text-mainBlack">Koenigsegg</span>
-          <span className="font-bold text-xs text-mainGray">Sport</span>
+          <span className="text-xs font-bold text-mainGray">Sport</span>
         </div>
         <svg
           width="24"
@@ -43,7 +43,7 @@ const CarCart = () => {
               />
             </svg>
           </span>
-          <span className="text-mainGray font-bold text-xs">90L</span>
+          <span className="text-xs font-bold text-mainGray">90L</span>
         </div>
         <div className="flex items-center gap-x-1">
           <span>
@@ -69,7 +69,7 @@ const CarCart = () => {
               <rect x="3" y="11" width="4" height="2" fill="#90A3BF" />
             </svg>
           </span>
-          <span className="text-mainGray font-bold text-xs">Manual</span>
+          <span className="text-xs font-bold text-mainGray">Manual</span>
         </div>
         <div className="flex items-center gap-x-1">
           <span>
@@ -98,16 +98,16 @@ const CarCart = () => {
               />
             </svg>
           </span>
-          <span className="text-mainGray font-bold text-xs">2 People</span>
+          <span className="text-xs font-bold text-mainGray">2 People</span>
         </div>
       </div>
 
-      <div className="mt-4 px-1 flex justify-between items-center">
-        <span className="text-xl text-mainBlack font-bold">
+      <div className="flex items-center justify-between px-1 mt-4">
+        <span className="text-xl font-bold text-mainBlack">
           $99.00/
-          <span className="text-mainGray text-xs ml-1">day</span>
+          <span className="ml-1 text-xs text-mainGray">day</span>
         </span>
-        <button className="font-bold text-white bg-mainDarkBlue px-3 py-2 rounded-md hover:text-mainDarkBlue border  hover:bg-mainGray transition-all ease-linear duration-150">
+        <button className="px-3 py-2 font-bold text-white transition-all duration-150 ease-linear border rounded-md bg-mainDarkBlue hover:text-mainDarkBlue hover:bg-mainGray">
           Rent Now
         </button>
       </div>
