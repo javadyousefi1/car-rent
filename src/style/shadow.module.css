@@ -1,0 +1,8 @@
+.imgCarShadow {
+  position: absolute;
+  width: 200px;
+  height: 68px;
+  left: 18px;
+  top: 10px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+}
