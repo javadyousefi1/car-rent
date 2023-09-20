@@ -36,7 +36,7 @@ const Login = () => {
                   CONFIRM
                 </button>
                 <NavLink to="/register">
-                  <p className="mt-5 text-xs text-center text-mainBlack">
+                  <p className="mt-5 text-xs text-center underline text-mainBlack">
                     Don't you have an account? register
                   </p>
                 </NavLink>

@@ -46,7 +46,7 @@ const Register = () => {
                   CONFIRM
                 </button>
                 <NavLink to="/login">
-                  <p className="mt-5 text-xs text-center text-mainBlack">
+                  <p className="mt-5 text-xs text-center underline text-mainBlack">
                     Already Have Account ? login
                   </p>
                 </NavLink>

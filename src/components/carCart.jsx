@@ -2,7 +2,7 @@ import car1 from "../../public/images/car (1).png";
 import Styles from "../style/shadow.module.css"
 const CarCart = () => {
   return (
-    <div className="bg-white rounded-xl p-4 min-w-[260px] shadow-sm ">
+    <div className="bg-white rounded-xl p-4 min-w-[260px] max-w-[280px] shadow-sm ">
       <div className="flex justify-between">
         <div className="flex flex-col ">
           <span className="font-bold text-md text-mainBlack">Koenigsegg</span>

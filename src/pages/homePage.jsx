@@ -1,5 +1,6 @@
 import Styles from "../style/background.module.css";
 import CarCart from "../components/carCart";
+import { NavLink } from "react-router-dom";
 
 const HomePage = () => {
   return (
@@ -324,11 +325,13 @@ const HomePage = () => {
         </div>
 
         {/* show more btn */}
-        <div className="flex justify-center mt-16">
-          <button className="px-3 py-2 font-bold text-white transition-all duration-150 ease-linear border rounded-md bg-mainDarkBlue hover:text-mainDarkBlue hover:bg-mainGray">
-            Show More
-          </button>
-        </div>
+        <NavLink to="cars">
+          <div className="flex justify-center mt-16">
+            <button className="px-3 py-2 font-bold text-white transition-all duration-150 ease-linear border rounded-md bg-mainDarkBlue hover:text-mainDarkBlue hover:bg-mainGray">
+              Show More
+            </button>
+          </div>
+        </NavLink>
       </div>
     </>
   );
