@@ -15,7 +15,7 @@ const Cars = () => {
   return (
     <div className="container max-w-6xl mx-auto md:mt-[100px] mt-24 px-2">
       {/* filter mobile */}
-      <div className="flex items-center justify-between px-4 mb-8 gap-x-4">
+      <div className="flex items-center justify-between px-4 mb-8 gap-x-4 md:hidden">
         <input
           name="name"
           type="email"
@@ -87,48 +87,50 @@ const Cars = () => {
       </div>
       {/* filter mobile toggle */}
 
-      <div>
+      <div className="md:hidden">
         <div
           onClick={() => setIsOpen(false)}
           className={
             isOpen
-              ? "fixed top-0 left-0 right-0 z-10 w-full h-full bg-black bg-opacity-60 transition-all ease-linear duration-300 md:hidden"
-              : " w-full h-full bg-black bg-opacity-0 transition-all ease-linear duration-300 md:hidden"
+              ? "fixed top-0 left-0 right-0 z-10 w-full h-full bg-black bg-opacity-60 transition-all ease-linear duration-300"
+              : " w-full h-full bg-black bg-opacity-0 transition-all ease-linear duration-300"
           }
         ></div>
 
         <div
           className={
             isOpen
-              ? "fixed bottom-0 left-0 right-0 z-10 w-full h-[50%] rounded-tr-[40px] rounded-tl-[40px] bg-white px-8  transition-all ease-linear duration-300 md:hidden"
-              : "fixed bottom-[-800px] left-0 right-0 z-10 w-full h-[50%] rounded-tr-[40px] rounded-tl-[40px] bg-white px-8  transition-all ease-linear duration-300 md:hidden"
+              ? "fixed bottom-0 left-0 right-0 z-10 w-full h-[50%] rounded-tr-[40px] rounded-tl-[40px] bg-white px-8  transition-all ease-linear duration-300 "
+              : "fixed bottom-[-800px] left-0 right-0 z-10 w-full h-[50%] rounded-tr-[40px] rounded-tl-[40px] bg-white px-8  transition-all ease-linear duration-300"
           }
         >
-          {/* Type */}
-          <div className="my-5 ml-1">
-            <span className="block mb-4 text-xs text-gray-500">Type</span>
+          <div className="flex flex-col justify-center w-full h-full">
+            {/* Type */}
+            <div className="my-5 ml-1">
+              <span className="block mb-4 text-xs text-gray-500">Type</span>
 
-            {checkBoxList.map((item) => (
-              <CheckBox key={item.id} text={item.text} htmlFOR={item.text} />
-            ))}
-          </div>
-          {/* range */}
-          <div>
-            <span className="block text-xs text-gray-500">Price</span>
-            <input
-              name="name"
-              type="range"
-              min={1}
-              max={100}
-              className=" bg-[#ededed] mt-2 w-full outline-none]  rounded-2xl border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
-            />
-            <p className="text-xs font-bold text-mainBlack">Max. $100.00</p>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="w-full py-1 mt-3 font-bold text-white transition-all duration-150 ease-linear border rounded-md bg-mainDarkBlue hover:text-mainDarkBlue hover:bg-mainGray"
-            >
-              Confirm
-            </button>
+              {checkBoxList.map((item) => (
+                <CheckBox key={item.id} text={item.text} htmlFOR={item.text} />
+              ))}
+            </div>
+            {/* range */}
+            <div>
+              <span className="block text-xs text-gray-500">Price</span>
+              <input
+                name="name"
+                type="range"
+                min={1}
+                max={100}
+                className=" bg-[#ededed] mt-2 w-full outline-none]  rounded-2xl border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
+              />
+              <p className="text-xs font-bold text-mainBlack">Max. $100.00</p>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="w-full py-1 mt-3 font-bold text-white transition-all duration-150 ease-linear border rounded-md bg-mainDarkBlue hover:text-mainDarkBlue hover:bg-mainGray"
+              >
+                Confirm
+              </button>
+            </div>
           </div>
         </div>
       </div>
