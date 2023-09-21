@@ -1,10 +1,24 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Styles from "../style/background.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import AuthInput from "../components/authInput";
+import { useEffect } from "react";
+import { isLogin } from "../utils/isLoggedIn";
+import { useDispatch } from "react-redux";
+import { loginHandler } from "../utils/login";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const userLoggedIn = isLogin();
+    if (userLoggedIn) {
+      navigate("/");
+    }
+  }, []);
+
   const initialValues = {
     email: "",
     password: "",
@@ -18,7 +32,16 @@ const Login = () => {
   });
 
   const onSubmit = (value) => {
-    console.log(formik.values);
+    const data = {
+      ...value,
+    };
+
+    loginHandler(
+      data,
+      "https://car-rent.javadyousefi.com/login.php",
+      dispatch,
+      navigate
+    );
   };
 
   const formik = useFormik({

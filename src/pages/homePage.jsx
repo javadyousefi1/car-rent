@@ -1,8 +1,10 @@
 import Styles from "../style/background.module.css";
 import CarCart from "../components/carCart";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
+
   return (
     <>
       <div className="container max-w-5xl mx-auto md:mt-[100px] mt-20">

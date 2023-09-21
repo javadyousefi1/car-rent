@@ -12,7 +12,7 @@ const AuthInput = ({ formik, name }) => {
         <input
           {...formik.getFieldProps({ name })}
           name={name}
-          type="text"
+          type={name}
           className="focus:shadow-2xl bg-[#ededed]  outline-none p-2 w-[220px] rounded-2xl border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
         />
 
