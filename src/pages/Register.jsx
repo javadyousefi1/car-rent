@@ -8,6 +8,7 @@ import { registerHandler } from "../utils/register";
 import { isLogin } from "../utils/isLoggedIn";
 import { useEffect } from "react";
 
+
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,6 +18,8 @@ const Register = () => {
     if (userLoggedIn) {
       navigate("/");
     }
+
+
   }, []);
 
   const initialValues = {
@@ -44,12 +47,7 @@ const Register = () => {
       joinDate: new Date().toISOString(),
     };
 
-    registerHandler(
-      data,
-      "https://car-rent.javadyousefi.com/register.php",
-      dispatch,
-      navigate
-    );
+    registerHandler(data, "https://car-rent.javadyousefi.com/register.php", dispatch, navigate);
   };
 
   const formik = useFormik({
