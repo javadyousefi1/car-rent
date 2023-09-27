@@ -1,5 +1,6 @@
 import car1 from "../../public/images/car (1).png";
-import Styles from "../style/shadow.module.css"
+import Styles from "../style/shadow.module.css";
+
 const CarCart = () => {
   return (
     <div className="bg-white rounded-xl p-4 min-w-[260px] max-w-[280px] shadow-sm ">

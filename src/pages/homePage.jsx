@@ -1,6 +1,7 @@
 import Styles from "../style/background.module.css";
 import CarCart from "../components/carCart";
 import { NavLink } from "react-router-dom";
+
 const HomePage = () => {
 
   return (

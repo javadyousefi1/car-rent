@@ -1,8 +1,8 @@
-import { REGISTER_USER } from "./authType";
+import { AUTH_USER } from "./authType";
 
 export function registerUser(payload) {
   return {
-    type: REGISTER_USER,
+    type: AUTH_USER,
     payload,
   };
 }

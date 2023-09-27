@@ -3,12 +3,15 @@ import Styles from "../style/background.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import AuthInput from "../components/authInput";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { isLogin } from "../utils/isLoggedIn";
 import { useDispatch } from "react-redux";
-import { loginHandler } from "../utils/login";
+import { authUser } from "../utils/auth";
+import AuthButton from "../components/authButton";
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -36,11 +39,13 @@ const Login = () => {
       ...value,
     };
 
-    loginHandler(
+    authUser(
       data,
       "https://car-rent.javadyousefi.com/login.php",
       dispatch,
-      navigate
+      navigate,
+      "You have login successfully",
+      setLoading
     );
   };
 
@@ -50,6 +55,7 @@ const Login = () => {
     validationSchema,
     validateOnMount: true,
   });
+
   return (
     <>
       <div className="container max-w-5xl mx-auto md:mt-[140px] mt-28 flex justify-center px-4">
@@ -60,17 +66,9 @@ const Login = () => {
               <div className="flex flex-col mt-10">
                 <AuthInput formik={formik} name={"email"} />
                 <AuthInput formik={formik} name={"password"} />
-                <button
-                  disabled={!formik.isValid}
-                  type="submit"
-                  className={
-                    formik.isValid
-                      ? "hover:shadow-xl mt-3 bg-mainDarkBlue outline-none p-2 w-[220px] rounded-2xl border border-[#ededed] text-white font-semibold transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
-                      : "hover:shadow-xl mt-3 bg-gray-400  cursor-not-allowed outline-none p-2 w-[220px] rounded-2xl border border-[#ededed] text-white font-semibold transition-all ease-linear duration-100  focus:border-mainDarkBlue"
-                  }
-                >
-                  CONFIRM
-                </button>
+
+                <AuthButton formik={formik} loading={loading} />
+
                 <NavLink to="/register">
                   <p className="mt-5 text-xs text-center underline text-mainBlack">
                     Don't you have an account? register

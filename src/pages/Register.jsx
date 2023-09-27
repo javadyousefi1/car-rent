@@ -4,12 +4,14 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import AuthInput from "../components/authInput";
 import { useDispatch } from "react-redux";
-import { registerHandler } from "../utils/register";
 import { isLogin } from "../utils/isLoggedIn";
-import { useEffect } from "react";
-
+import { useEffect, useState } from "react";
+import { authUser } from "../utils/auth";
+import AuthButton from "../components/authButton";
 
 const Register = () => {
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -18,8 +20,6 @@ const Register = () => {
     if (userLoggedIn) {
       navigate("/");
     }
-
-
   }, []);
 
   const initialValues = {
@@ -37,7 +37,10 @@ const Register = () => {
       .required("Email is required"),
     password: Yup.string()
       .required("Password is required")
-      .min(6, "at least have 6 charchter"),
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+      ),
   });
 
   const onSubmit = (value) => {
@@ -47,7 +50,14 @@ const Register = () => {
       joinDate: new Date().toISOString(),
     };
 
-    registerHandler(data, "https://car-rent.javadyousefi.com/register.php", dispatch, navigate);
+    authUser(
+      data,
+      "https://car-rent.javadyousefi.com/register.php",
+      dispatch,
+      navigate,
+      "You have registered successfully",
+      setLoading
+    );
   };
 
   const formik = useFormik({
@@ -71,17 +81,10 @@ const Register = () => {
                 <AuthInput formik={formik} name={"email"} />
                 <AuthInput formik={formik} name={"password"} />
 
-                <button
-                  disabled={!formik.isValid}
-                  type="submit"
-                  className={
-                    formik.isValid
-                      ? "hover:shadow-xl mt-3 bg-mainDarkBlue outline-none p-2 w-[220px] rounded-2xl border border-[#ededed] text-white font-semibold transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
-                      : "hover:shadow-xl mt-3 bg-gray-400 cursor-not-allowed outline-none p-2 w-[220px] rounded-2xl border border-[#ededed] text-white font-semibold transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
-                  }
-                >
-                  CONFIRM
-                </button>
+                <div className="mt-4">
+                  <AuthButton formik={formik} loading={loading} />
+                </div>
+
                 <NavLink to="/login">
                   <p className="mt-5 text-xs text-center underline text-mainBlack">
                     Already Have Account ? login
